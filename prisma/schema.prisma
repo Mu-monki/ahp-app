@@ -24,6 +24,7 @@ model DecisionRoom {
   ahp_alternatives_set                          Json
   ahp_do_cost_benefit_analysis                  Boolean
   require_respondent_names                      Boolean
+  is_active                                     Boolean
   created_at                                    DateTime @default(now())
   updated_at                                    DateTime
 }
