@@ -13,3 +13,40 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model DecisionRoom {
+  room_id                                       String @id @default(uuid())
+  room_code                                     String @unique
+  ahp_aggregated_summary_id                     String
+  ahp_goal                                      String
+  ahp_criteria_set                              Json
+  ahp_alternatives_set                          Json
+  ahp_do_cost_benefit_analysis                  Boolean
+  require_respondent_names                      Boolean
+  created_at                                    DateTime @default(now())
+  updated_at                                    DateTime
+}
+
+model AHPJudgements {
+  ahp_judgement_id                              String @id @default(uuid())
+  room_code                                     String
+  ahp_judgement_pairwise_matrix                 Json
+  ahp_alternative_comparison_matrices           Json
+  ahp_final_scoring_matrix                      Json
+  ahp_consistency_ratio                         Float
+  respondent_name                               String?
+  created_at                                    DateTime @default(now())
+}
+
+model AHPAggregatedSummary {
+  ahp_aggregated_sum_id                         String @id @default(uuid())
+  room_code                                     String
+  ahp_aggregated_pairwise_matrix                String
+  ahp_aggregated_final_scoring_matrix           Json
+  ahp_aggregated_pairwise_criterion_variance    Json
+  ahp_aggregated_cost_benefit_ratios            Json?
+  total_respondents                             Int
+  created_at                                    DateTime @default(now())
+  updated_at                                    DateTime?
+}
