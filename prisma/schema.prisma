@@ -20,8 +20,8 @@ model DecisionRoom {
   room_code                                     String @unique
   ahp_aggregated_summary_id                     String
   ahp_goal                                      String
-  ahp_criteria_set                              Json
-  ahp_alternatives_set                          Json
+  criteria                                      Criterion[]
+  alternatives                                  Alternative[]
   ahp_do_cost_benefit_analysis                  Boolean
   require_respondent_names                      Boolean
   is_active                                     Boolean
@@ -52,4 +52,27 @@ model AHPAggregatedSummary {
   total_respondents                             Int
   created_at                                    DateTime @default(now())
   updated_at                                    DateTime?
+}
+
+model Criterion {
+  critrion_id                                   String @id @default(uuid())
+  room_id                                       String
+  room                                          DecisionRoom @relation(fields: [room_id], references: [room_id], onDelete: Cascade)
+  name                                          String
+  desc                                          String?
+  order                                         Int
+  created_at                                    DateTime @default(now())
+  updated_at                                    DateTime?
+  @@unique([room_id, name])
+}
+
+model Alternative {
+  alternative_id                                String @id @default(uuid())
+  room_id                                       String
+  room                                          DecisionRoom @relation(fields: [room_id], references: [room_id], onDelete: Cascade)
+  name                                          String
+  desc                                          String?
+  created_at                                    DateTime @default(now())
+  updated_at                                    DateTime?
+  @@unique([room_id, name])
 }
