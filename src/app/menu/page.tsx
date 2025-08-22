@@ -3,13 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link';
 
 const Menu = () => {
-    const NCPAG_LINK = 'https://ncpag.upd.edu.ph/'
-    const GRIT_LINK = 'https://www.facebook.com/UPNCPAGGRITLabs'
+    const NCPAG_LINK = process.env.NCPAG_LINK
+    const GRIT_LINK = process.env.GRIT_FB_LINK
 
     return (
     <>
         <div className="my-6 flex justify-center items-center">
-            <Link href={ NCPAG_LINK } passHref>
+            <Link href={ NCPAG_LINK ?? 'https://ncpag.upd.edu.ph/' } passHref>
                 <Image
                     src="/assets/ncpag-logo.png"
                     width={75}
@@ -18,7 +18,7 @@ const Menu = () => {
                     alt=""
                 />
             </Link>
-            <Link href={ GRIT_LINK } passHref>
+            <Link href={ GRIT_LINK ?? 'https://www.facebook.com/UPNCPAGGRITLabs' } passHref>
                 <Image
                     src="/assets/grit-logo-round.png"
                     width={80}
