@@ -35,6 +35,7 @@ model AHPJudgements {
   ahp_alternative_comparison_matrices           Json
   ahp_final_scoring_matrix                      Json
   ahp_consistency_ratio                         Float
+  ahp_eigenvector_set                           Json
   respondent_name                               String?
   created_at                                    DateTime @default(now())
 }
@@ -46,6 +47,7 @@ model AHPAggregatedSummary {
   ahp_aggregated_final_scoring_matrix           Json
   ahp_aggregated_pairwise_criterion_variance    Json
   ahp_aggregated_cost_benefit_ratios            Json?
+  ahp_aggregated_eigenvector_set                Json
   total_respondents                             Int
   created_at                                    DateTime @default(now())
   updated_at                                    DateTime?
