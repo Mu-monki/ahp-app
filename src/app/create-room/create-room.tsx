@@ -133,17 +133,17 @@ const AHPForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
-      <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6">
+    <div className="min-h-screen py-8 px-4 bg-[#2B2B2B]">
+      <div className="max-w-2xl mx-auto bg-[#F2EBE3] rounded-xl shadow-md overflow-hidden p-6">
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-indigo-700 mb-2">AHP Decision Matrix</h1>
-          <p className="text-gray-600 italic">Please Complete the Analytic Hierarchy Process Form</p>
+          <h1 className="text-3xl font-bold text-[#D0AC3C] mb-2">AHP Decision Matrix</h1>
+          <p className="text-[#2B2B2B] italic">Please Complete the Analytic Hierarchy Process Form</p>
         </div>
         
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Goal Field */}
           <div className="space-y-2">
-            <label htmlFor="goal" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="goal" className="block text-sm font-bold text-[#2B2B2B]">
               AHP Goal <span className="text-red-500">*</span>
             </label>
             <input
@@ -152,7 +152,7 @@ const AHPForm: React.FC = () => {
               value={formData.goal}
               onChange={handleGoalChange}
               placeholder="Enter your decision goal"
-              className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 text-gray-700 ${
+              className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 text-[#2B2B2B] ${
                 errors.goal ? 'border-red-500' : 'border-gray-300'
               }`}
             />
@@ -160,10 +160,10 @@ const AHPForm: React.FC = () => {
           </div>
 
           {/* Alternatives Section */}
-          <div className="border rounded-lg p-4 bg-gray-50">
+          <div className="border rounded-lg p-4 bg-[#F2EBE3]">
             <div className="flex justify-between items-center mb-4">
               <div>
-                <h3 className="text-lg font-medium text-gray-800">Alternatives</h3>
+                <h3 className="text-lg font-medium text-[#2B2B2B]">Alternatives</h3>
                 <p className="text-sm text-gray-600 italic">At least 2 alternatives required</p>
               </div>
               <button
@@ -203,10 +203,10 @@ const AHPForm: React.FC = () => {
           </div>
 
           {/* Criteria Section */}
-          <div className="border rounded-lg p-4 bg-gray-50">
+          <div className="border rounded-lg p-4 bg-[#F2EBE3]">
             <div className="flex justify-between items-center mb-4">
               <div>
-                <h3 className="text-lg font-medium text-gray-800">Criteria</h3>
+                <h3 className="text-lg font-medium text-[#2B2B2B]">Criteria</h3>
                 <p className="text-sm text-gray-600 italic">At least 2 criteria required</p>
               </div>
               <button

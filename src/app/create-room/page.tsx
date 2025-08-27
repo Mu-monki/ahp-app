@@ -6,7 +6,6 @@ import AHPForm from './create-room'
 const CreateRoom = () => {
   return (
     <>
-      <div>Create Room</div>
       <AHPForm />
     </>
   )
