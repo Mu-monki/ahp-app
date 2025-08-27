@@ -63,8 +63,3 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }
-
-// Helper function to generate a unique room code
-function generateRoomCode(): string {
-  return Math.random().toString(36).substring(2, 8).toUpperCase();
-}
