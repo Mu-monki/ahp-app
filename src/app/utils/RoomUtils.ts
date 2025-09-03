@@ -1,6 +1,14 @@
 const { randomBytes } = require('node:crypto');
 
+const ALPHANUMERIC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
 export function generateSecureRandomString(length: number) {
-    const bytesNeeded = Math.ceil(length / 2); 
-    return randomBytes(bytesNeeded).toString('hex').substring(0, length).toUpperCase();
+    let result = '';
+    const randomValues = randomBytes(length);
+    
+    for (let i = 0; i < length; i++) {
+        result += ALPHANUMERIC[randomValues[i] % ALPHANUMERIC.length];
+    }
+    
+    return result;
 }

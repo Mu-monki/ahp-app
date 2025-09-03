@@ -6,7 +6,8 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  // output   = "../src/generated/prisma"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -49,7 +50,7 @@ model AHPAggregatedSummary {
   ahp_aggregated_pairwise_criterion_variance    Json
   ahp_aggregated_cost_benefit_ratios            Json?
   ahp_aggregated_eigenvector_set                Json
-  total_respondents                             Int
+  total_respondents                             Int @default(0)
   created_at                                    DateTime @default(now())
   updated_at                                    DateTime?
 }
@@ -63,7 +64,6 @@ model Criterion {
   order                                         Int
   created_at                                    DateTime @default(now())
   updated_at                                    DateTime?
-  @@unique([room_id, name])
 }
 
 model Alternative {
@@ -74,5 +74,4 @@ model Alternative {
   desc                                          String?
   created_at                                    DateTime @default(now())
   updated_at                                    DateTime?
-  @@unique([room_id, name])
 }

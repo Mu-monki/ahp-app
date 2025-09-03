@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import AHPForm from './create-room'
+import AHPForm from './ahp-room'
 
 const CreateRoom = () => {
   return (

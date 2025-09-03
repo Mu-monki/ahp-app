@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createAHPRoom } from '@/actions/actions';
 
 // Define types for our form data
 interface AHPFormData {
@@ -126,6 +127,8 @@ const AHPForm: React.FC = () => {
         alternatives: formData.alternatives.filter(alt => alt.trim() !== ''),
         criteria: formData.criteria.filter(crit => crit.trim() !== '')
       };
+
+      createAHPRoom();
 
       console.log('Form submitted:', submissionData);
       alert('Form submitted successfully! Check console for data.');
