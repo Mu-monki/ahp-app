@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createAHPRoom } from '@/actions/actions';
+import { ConfirmationModal } from '@/components/modal-confirmation';
 
 // Define types for our form data
 interface AHPFormData {
@@ -30,6 +31,10 @@ const AHPForm: React.FC = () => {
     criteria: ''
   });
 
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(true)
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+
+
   // Handle goal change
   const handleGoalChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({ ...formData, goal: e.target.value });
@@ -49,6 +54,11 @@ const AHPForm: React.FC = () => {
     newCriteria[index] = value;
     setFormData({ ...formData, criteria: newCriteria });
   };
+
+  // Handle modal confirmation
+  const handleConfirm = (): void => {
+    setIsModalOpen(!isModalOpen);
+  }
 
   // Add a new alternative
   const addAlternative = (): void => {
@@ -119,6 +129,7 @@ const AHPForm: React.FC = () => {
   // Handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    setIsModalOpen(true);
     
     if (validateForm()) {
       // Prepare data for submission
@@ -137,6 +148,14 @@ const AHPForm: React.FC = () => {
 
   return (
     <div className="min-h-screen py-8 px-4 bg-[#2B2B2B]">
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirm}
+        title="Confirm AHP Form Submission"
+        message="Are you sure you want to generate this decision room?"
+        isLoading={isSubmitting}
+      />
       <div className="max-w-2xl mx-auto bg-[#F2EBE3] rounded-xl shadow-md overflow-hidden p-6">
         <div className="text-center mb-6">
           <h1 className="text-3xl font-bold text-[#D0AC3C] mb-2">AHP Decision Matrix</h1>

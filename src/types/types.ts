@@ -17,3 +17,10 @@ export interface CriterionInterface {
     desc?: string;
     order: number;
 }
+
+export interface AlternativeInterface {
+    room_id: string;
+    name: string;
+    desc?: string;
+}
+
