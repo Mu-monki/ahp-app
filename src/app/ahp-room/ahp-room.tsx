@@ -31,7 +31,7 @@ const AHPForm: React.FC = () => {
     criteria: ''
   });
 
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(true)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
 
